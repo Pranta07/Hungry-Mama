@@ -85,10 +85,11 @@ const displayDetails = (meal) => {
     // console.log(meal);
     const detailsDiv = document.getElementById("meal-details");
     detailsDiv.innerHTML = `
-        <div class="text-center card h-100" style="max-width:300px">
+        <div class="card h-100 border-0 shadow" style="max-width:300px">
                 <img src="${meal.strMealThumb}" class="card-img-top" alt="..." />
                 <div class="card-body">
-                    <h5 class="card-title">${meal.strMeal}</h5>
+                    <h5 class="card-title text-center">${meal.strMeal}</h5>
+                    <ul id="list"></ul>
                 </div>
                 <button
                     onclick=""
@@ -99,5 +100,23 @@ const displayDetails = (meal) => {
                 </button>
         </div>
         `;
-    window.scrollTo(0, 30);
+
+    const list = document.getElementById("list");
+    console.log(list);
+    for (let i = 1; i <= 20; i++) {
+        const ingredientKey = "strIngredient" + i;
+        const ingredient = meal[ingredientKey];
+        const measureKey = "strMeasure" + i;
+        const measure = meal[measureKey];
+
+        const li = document.createElement("li");
+        li.innerText = ingredient + " " + measure;
+        if (
+            (ingredient + measure).length > 1 &&
+            ingredient != null &&
+            measure != null
+        )
+            list.appendChild(li);
+    }
+    window.scrollTo(0, 30); //scroll vertical after adding
 };
