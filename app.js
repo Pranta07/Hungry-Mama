@@ -18,6 +18,7 @@ const errorMessage = (text) => {
 const buttonSearch = document.getElementById("button-search");
 buttonSearch.addEventListener("click", () => {
     document.getElementById("error-msg").classList.add("d-none"); //hide error msg
+    document.getElementById("meal-details").innerHTML = ""; // clear prev meal details
     document.getElementById("meals-container").innerHTML = ""; // clears previous search results
     document.getElementById("spinner").classList.remove("d-none"); //shiow spinner
 
@@ -63,7 +64,7 @@ const displayMeals = (meals, text) => {
                 <div class="card-body">
                     <h5 class="card-title">${strMeal}</h5>
                 </div>
-                <button id="button-details" class="btn btn-primary">
+                <button onclick="loadDetails('${idMeal}')" id="button-details" class="btn btn-primary">
                     Details
                 </button>
             </div>
@@ -71,4 +72,32 @@ const displayMeals = (meals, text) => {
             mealsContainer.appendChild(div);
         });
     }
+};
+
+const loadDetails = (id) => {
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+    fetch(url)
+        .then((res) => res.json())
+        .then((data) => displayDetails(data.meals[0]));
+};
+
+const displayDetails = (meal) => {
+    // console.log(meal);
+    const detailsDiv = document.getElementById("meal-details");
+    detailsDiv.innerHTML = `
+        <div class="text-center card h-100" style="max-width:300px">
+                <img src="${meal.strMealThumb}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">${meal.strMeal}</h5>
+                </div>
+                <button
+                    onclick=""
+                    id="button-details"
+                    class="btn btn-primary"
+                    >
+                        Add to cart
+                </button>
+        </div>
+        `;
+    window.scrollTo(0, 30);
 };
