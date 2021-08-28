@@ -1,0 +1,5 @@
+search by full name => https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata
+
+List all meals by first letter => https://www.themealdb.com/api/json/v1/1/search.php?f=a
+
+Lookup full meal details by id => https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772

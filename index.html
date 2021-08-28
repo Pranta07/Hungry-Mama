@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hungry MAMA</title>
+        <!-- CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+        />
+        <!-- icons cdn -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+        />
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand fw-bold" href="#">Hungry MAMA</a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarTogglerDemo02"
+                        aria-controls="navbarTogglerDemo02"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div
+                        class="collapse navbar-collapse"
+                        id="navbarTogglerDemo02"
+                    >
+                        <ul class="mb-2 navbar-nav ms-auto me-5 mb-lg-0">
+                            <li class="mx-3 nav-item">
+                                <a class="nav-link" aria-current="page" href="#"
+                                    >Home</a
+                                >
+                            </li>
+                            <li class="mx-3 nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li class="mx-3 nav-item">
+                                <a class="nav-link" href="#">Recipes</a>
+                            </li>
+                            <li class="mx-3 nav-item">
+                                <i
+                                    id="cart"
+                                    class="text-primary fs-4 bi bi-cart3"
+                                >
+                                    <span
+                                        class=" badge bg-light text-primary rounded-pill"
+                                        >0</span
+                                    >
+                                </i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <!-- search section -->
+            <div class="mx-auto my-5 input-group w-50">
+                <input
+                    id="search-field"
+                    type="text"
+                    class="border-0 rounded-start form-control bg-light"
+                    placeholder="Search here..."
+                    aria-label=""
+                />
+                <button
+                    class="btn btn-outline-success"
+                    type="button"
+                    id="button-search"
+                >
+                    Search
+                </button>
+            </div>
+
+            <!-- error msg -->
+            <div
+                id="error-msg"
+                class="p-5 mx-auto rounded shadow bg-warning w-50 d-none"
+            ></div>
+
+            <!-- loading spinner -->
+            <div id="spinner" class="d-flex justify-content-center d-none">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
+            <!-- meals container -->
+            <section class="container">
+                <div
+                    id="meals-container"
+                    class=" d-flex justify-content-center row row-cols-1 row-cols-md-4 g-5"
+                ></div>
+            </section>
+        </main>
+        <footer></footer>
+        <script src="app.js"></script>
+    </body>
+</html>
