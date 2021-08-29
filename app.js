@@ -92,7 +92,7 @@ const displayDetails = (meal) => {
                     <ul id="list"></ul>
                 </div>
                 <button
-                    onclick=""
+                    onclick="addToCart('${meal.idMeal}')"
                     id="button-details"
                     class="btn btn-primary"
                     >
@@ -100,9 +100,9 @@ const displayDetails = (meal) => {
                 </button>
         </div>
         `;
-
+    // creating list of ingredient
     const list = document.getElementById("list");
-    console.log(list);
+    // console.log(list);
     for (let i = 1; i <= 20; i++) {
         const ingredientKey = "strIngredient" + i;
         const ingredient = meal[ingredientKey];
@@ -119,4 +119,57 @@ const displayDetails = (meal) => {
             list.appendChild(li);
     }
     window.scrollTo(0, 30); //scroll vertical after adding
+};
+
+const addToCart = (id) => {
+    // console.log(id);
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+    fetch(url)
+        .then((res) => res.json())
+        .then((data) => cart(data.meals[0]));
+};
+
+//cart items array
+let items = [];
+const cart = (meal) => {
+    const item = items.find((item) => item.id == meal.idMeal); //returns the item object or undefined
+    console.log(item);
+    if (item != undefined) {
+        item.quantity++;
+        const quantitySpan = document.getElementById(
+            `quantity-${items.indexOf(item)}`
+        );
+        quantitySpan.innerText = item.quantity;
+    } else {
+        items = [
+            ...items,
+            {
+                id: meal.idMeal,
+                name: meal.strMeal,
+                quantity: 1,
+            },
+        ];
+        const cart = document.getElementById("cart");
+        const item = document.createElement("div");
+        item.className =
+            "p-3 mb-3 border rounded shadow row border-dark align-items-center";
+        item.innerHTML = `
+                <div class="col-4">
+                <img
+                    src="${meal.strMealThumb}"
+                    alt=""
+                    class="rounded-circle"
+                    width="100"
+                    height="100"
+                    />
+                </div>
+                <div class="col-8">
+                    <h3>${meal.strMeal}</h3>
+                    <p class="m-0">Quantity: 
+                        <span id="quantity-${items.length - 1}">1</span>
+                    </p>
+                </div>
+            `;
+        cart.appendChild(item);
+    }
 };

@@ -50,12 +50,14 @@
                             <li class="mx-3 nav-item">
                                 <a class="nav-link" href="#">Recipes</a>
                             </li>
-                            <li class="mx-3 nav-item">
-                                <i
-                                    id="cart"
-                                    class="text-primary fs-4 bi bi-cart3"
-                                >
+                            <li
+                                class="mx-3 nav-item"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"
+                            >
+                                <i class="text-primary fs-4 bi bi-cart3">
                                     <span
+                                        id="item-count"
                                         class=" badge bg-light text-primary rounded-pill"
                                         >0</span
                                     >
@@ -111,8 +113,56 @@
                     class=" d-flex justify-content-center row row-cols-1 row-cols-md-4 g-5"
                 ></div>
             </section>
+
+            <!-- cart item -->
+            <!-- Modal -->
+            <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+            >
+                <div
+                    class=" modal-dialog modal-dialog-scrollable modal-dialog-centered"
+                >
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Your orders
+                            </h5>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div id="cart" class="modal-body"></div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-success">
+                                Checkout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
         <footer></footer>
+        <!-- js cdn -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+        ></script>
+
         <script src="app.js"></script>
     </body>
 </html>
