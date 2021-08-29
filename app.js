@@ -15,8 +15,8 @@ const errorMessage = (text) => {
     errorDiv.classList.remove("d-none");
 };
 
-const buttonSearch = document.getElementById("button-search");
-buttonSearch.addEventListener("click", () => {
+// clears prev results and get the searchtext then load data
+function clearsAndLoad() {
     document.getElementById("error-msg").classList.add("d-none"); //hide error msg
     document.getElementById("meal-details").innerHTML = ""; // clear prev meal details
     document.getElementById("meals-container").innerHTML = ""; // clears previous search results
@@ -26,6 +26,21 @@ buttonSearch.addEventListener("click", () => {
     const searchText = searchField.value;
     searchField.value = "";
     loadData(searchText);
+}
+
+//search on enter
+const searchField = document.getElementById("search-field");
+searchField.addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+        // alert("Enter key pressed");
+        clearsAndLoad();
+    }
+});
+
+//search on button
+const buttonSearch = document.getElementById("button-search");
+buttonSearch.addEventListener("click", () => {
+    clearsAndLoad();
 });
 
 //load data based on search text
