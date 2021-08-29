@@ -172,4 +172,6 @@ const cart = (meal) => {
             `;
         cart.appendChild(item);
     }
+    //update item count in nav
+    document.getElementById("item-count").innerText = items.length;
 };
