@@ -148,7 +148,7 @@ const addToCart = (id) => {
 let items = [];
 const cart = (meal) => {
     const item = items.find((item) => item.id == meal.idMeal); //returns the item object or undefined
-    console.log(item);
+    // console.log(item);
     if (item != undefined) {
         item.quantity++;
         const quantitySpan = document.getElementById(
@@ -173,7 +173,7 @@ const cart = (meal) => {
                 <img
                     src="${meal.strMealThumb}"
                     alt=""
-                    class="rounded-circle"
+                    class="rounded-circle img-fluid"
                     width="100"
                     height="100"
                     />
